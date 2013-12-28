@@ -19,6 +19,7 @@ public class RadixSort extends Sort
         {
             halt = true;
             setZero(acc);
+            /* counting sort is employed in each iteration */
             for (int i = 0; i < size; i ++)
             {
                int v = numbers[i] / denom % base; 
