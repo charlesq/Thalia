@@ -8,7 +8,9 @@ public class TestSuiteSort
         TestSuite suite = new TestSuite();
         suite.addTest(new TestQuickSort());
         suite.addTest(new TestHeapSort());
-
+        suite.addTest(new TestBubbleSort());
+        suite.addTest(new TestMergeSort());
+        suite.addTest(new TestRadixSort());
         TestResult result = new TestResult();
         suite.run(result);
         System.out.println();

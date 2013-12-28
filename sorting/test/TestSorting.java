@@ -17,7 +17,7 @@ public abstract class TestSorting extends TestCase
         instantiate();
         System.out.println();
         System.out.println("****** run (" + getName() + ") test case **********");
-        printArray("Prio to sort:"); 
+        printArray("Prior to sort:"); 
     }
     public void runTest()
     {
