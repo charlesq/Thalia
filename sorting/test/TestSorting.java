@@ -70,8 +70,11 @@ public abstract class TestSorting extends TestCase
         for (int i = 1; i < numbers.length; i ++) 
         {
             j = rdm.nextInt(Integer.MAX_VALUE) % (i +1);
+     
+            /* j is always positive. 
             if (j < 0)
                 j = -j;
+            */
             swap(i, j); 
         }
     }
