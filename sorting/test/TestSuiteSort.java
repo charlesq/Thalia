@@ -11,6 +11,7 @@ public class TestSuiteSort
         suite.addTest(new TestBubbleSort());
         suite.addTest(new TestMergeSort());
         suite.addTest(new TestRadixSort());
+        suite.addTest(new TestInsertSort());
         TestResult result = new TestResult();
         suite.run(result);
         System.out.println();

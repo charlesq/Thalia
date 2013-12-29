@@ -19,14 +19,14 @@ public class HeapSort extends Sort
     }
     private void heapify()
     {
-        for (int i = size/2; i >= 0; i --)
+        for (int i = size >>> 1; i >= 0; i --)
         {
             sift_down(i, size);
         }
     }
     private void sift_down(int i, int len)
     {
-        int l = i * 2 + 1, r = l + 1;
+        int l = i  << 1 + 1, r = l + 1;
         if (l >= len)
             return;
         if (r >= len)

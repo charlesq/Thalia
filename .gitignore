@@ -1,2 +1,9 @@
 *.class
 *.jar
+cscope.*
+*.gch
+*.swo
+bin/
+*.swo
+TAGS
+

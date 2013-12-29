@@ -21,7 +21,7 @@ public class MergeSort extends Sort
        if (start >= end)
           return;
        
-       int m = (start + end)/2; 
+       int m = (start + end) >>> 1; 
        /*divide into two sub arrays */
        sort(start, m);
        sort(m + 1, end);
@@ -30,7 +30,7 @@ public class MergeSort extends Sort
     }
     private void merge(int start, int end)
     {
-        int m = (start + end)/2, i = m +1, j = 0;
+        int m = (start + end) >>> 1, i = m +1, j = 0;
         while(start <= m && i <= end)
             b[j++] = numbers[start] < numbers[i]? numbers[start++]: numbers[i++];
         while(start <= m)

@@ -33,6 +33,7 @@ public abstract class Sort
         }
         System.out.println();
     }
+    /* alternatively use java.util.Arrays.swap() */
     void swap(int i, int j)
     {
         if (i == j)
