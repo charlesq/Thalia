@@ -13,11 +13,14 @@ public class TestSuiteSort
         suite.addTest(new TestRadixSort());
         suite.addTest(new TestInsertSort());
         TestResult result = new TestResult();
+        TestSorting.setTestResult(result);
         suite.run(result);
         System.out.println();
-        System.out.println("There are in total: " + result.runCount() + " test cases"); 
+        System.out.println("Has run " +  result.runCount() + " test cases"); 
         if(result.wasSuccessful())
             System.out.println("All tests have passed!");
+        else
+            System.out.println("failed !!!");
 
 
     } 

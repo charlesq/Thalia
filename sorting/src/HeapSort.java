@@ -26,7 +26,7 @@ public class HeapSort extends Sort
     }
     private void sift_down(int i, int len)
     {
-        int l = i  << 1 + 1, r = l + 1;
+        int l = (i << 1) + 1, r = l + 1;
         if (l >= len)
             return;
         if (r >= len)

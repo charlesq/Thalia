@@ -3,6 +3,7 @@ import junit.framework.*;
 import com.charlesq.java.sorting.Sort;
 import java.util.*;
 import org.junit.Test;
+import junit.framework.*;
 
 import static org.junit.Assert.*;
 
@@ -10,6 +11,7 @@ public abstract class TestSorting extends TestCase
 {
     int [] numbers;
     Sort sort;
+    static TestResult testResult;
     public void setUp()
     {
         int sz = 30;
@@ -19,13 +21,23 @@ public abstract class TestSorting extends TestCase
         System.out.println("****** run (" + getName() + ") test case **********");
         printArray("Prior to sort:"); 
     }
+    public static void setTestResult(TestResult tr)
+    {
+       testResult = tr; 
+    }
     public void runTest()
     {
         sort.sort();
         printArray("Post Sort:");
-
-
-        assertTrue(isSorted());
+        if (!isSorted())
+        {
+            /* if testResult is non-null, 
+               will test suite exits on failure */
+            if (testResult != null)
+                testResult.stop();
+            assertTrue(false);
+        }
+        
     }
     abstract public void instantiate();
     private boolean isSorted()
