@@ -8,6 +8,7 @@ import org.junit.runner.JUnitCore;
 @RunWith (Suite.class)
 @SuiteClasses({
     TestSearch.class,
+    TestMST.class,
  
 })
 

@@ -21,24 +21,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 public class Graph
 {
-    public static class Edge
-    {
-        private int e;
-        private int o;
-        private int w;
-        public int e () { return e; } 
-        public int o () { return o; }
-        public int w () { return w; }
-        public Edge(int e, int o, int w)
-        {
-            this.e = e;
-            this.o = o;
-            this.w = w;
-        }
-    }
     int V; 
     int E;
     List<Edge> [] Adj;  
+    ArrayList<Edge>  Edges;
     @SuppressWarnings("unchecked")
     public Graph(String fn, boolean directed) 
     {
@@ -59,6 +45,7 @@ public class Graph
            System.out.println("Error in reading file " + fn);
            return; 
        }
+       Edges = new ArrayList<Edge>();
        /* read number of edges in the graph */
        E = sc.nextInt();
        Adj = new ArrayList [V];
@@ -72,6 +59,7 @@ public class Graph
            ep2 = sc.nextInt();
            w   = sc.nextInt();  
            Edge e = new Edge(ep1, ep2, w); 
+           Edges.add(e);
            Adj[ep1].add(e);
            if (!directed)
                Adj[ep2].add(e);
@@ -87,6 +75,7 @@ public class Graph
        V = g.V(); 
        E = g.E();
        Adj = new ArrayList [V];
+       Edges = new ArrayList<Edge>();
        List<Edge> l;
        Iterator<Edge> it;
        Edge e;
@@ -98,6 +87,7 @@ public class Graph
            {
                e = it.next();
                Edge edge = new Edge(e.e(), e.o(), e.w());
+               Edges.add(edge);
                Adj[e.e()].add(edge);
                Adj[e.o()].add(edge);
            }
@@ -119,6 +109,7 @@ public class Graph
         List<Edge> l;
         Iterator<Edge> it;
         Edge e;
+        Edges = new ArrayList<Edge> ();
         while(--V >= 0)
         {
             l = Adj[V];
@@ -128,10 +119,12 @@ public class Graph
                 e = it.next();
                 Edge edge = new Edge(e.o(), e.e(),  e.w());
                 Adj[e.e()].add(edge);
+                Edges.add(edge);
             }
         }
     }
     public int V() { return V; } 
     public int E() { return E; } 
     public final List<Edge> Adj(int v) { return Adj[v]; } 
+    public ArrayList<Edge> Edges() { return Edges; }
 }

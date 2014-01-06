@@ -26,7 +26,7 @@ public class BFS
     }
     public void search (int v)
     {
-        List<Graph.Edge> l;
+        List<Edge> l;
         Iterator<Integer> vIt;
         int ep;
         if (v >= g.V() || vstate[v] != 0)
@@ -47,7 +47,7 @@ public class BFS
                break;
            case 1:
                l = g.Adj(v); 
-               for (Graph.Edge edge: l)
+               for (Edge edge: l)
                {
                    ep = edge.e() == v? edge.o(): edge.e();    
                    if (vstate[ep] == 0)

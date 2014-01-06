@@ -39,9 +39,9 @@ public class DFS
        if (discovered != null)
            discovered.act(v);           
        vstate[v] = 1;
-       List<Graph.Edge> l = g.Adj(v);
+       List<Edge> l = g.Adj(v);
        int ep;
-       for (Graph.Edge edge: l)
+       for (Edge edge: l)
        {
            ep = (v == edge.e())? edge.o(): edge.e(); 
            search(ep); 
