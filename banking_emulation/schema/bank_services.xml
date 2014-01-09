@@ -1,0 +1,24 @@
+<!--
+   bank_services defines the services the bank offers to members.  
+-->
+<services>
+    <service>
+       <name>checking</name>
+       <description>
+       a checking account service which puts no limit on number of monthly transactions on the account
+       as long as the balance is greater than zero.   
+       a transaction may be either in cash form or personal check form. 
+       </description>
+    </service>
+    <service>
+      <name>savings</name>
+      <description> a saving account service may have a maximal of 10 monthly transactions. 
+      </description>
+    </service>
+</services>
+<!--
+     message_digest tag is used to assure integrity of the file, should be computed over all 
+     elements in services node, any access to this file shall verify this value first. 
+--> 
+<message_digest>
+</message_digest>

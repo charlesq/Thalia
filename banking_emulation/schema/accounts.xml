@@ -1,0 +1,37 @@
+<!-- 
+  accounts.xml tracks all the accounts with life span in this bank.
+  For archiving purpose, accounts may only added, edited and must not 
+  be deleted once entered into the system.  
+
+  accounts information should be consistent with member_profiles.xml.
+
+  Read access: casher
+  Read/Write access: banker
+-->
+<accounts>
+ <!-- an account status mybe one of three "active", "locked", "closed" -->
+ <account status "active" > 
+    <number>1159-1</number>
+    <!-- account opening date -->
+    <!-- 01012014 denote 01/01/2014-->
+    <open>01012014</open>
+    <!-- join account may have multiple owners -->
+    <owners>
+       <owner>
+            <type>primary</type>
+            <ssn>123-45-8901</ssn>
+            <name>May Flowers</name>
+       </owner>
+    <owners>
+    <type>checking</type>
+    <number>1159-1</number>
+    <apr>0.2</apr>
+    <!-- other settings are not supported yet -->
+    <settings>
+    </settings>
+ </account>
+</accounts>
+<!--computed over elements in node accounts. This should be verifid upon access and recomputed 
+    upone edited -->
+<message_digest>
+</meeesge_digest>

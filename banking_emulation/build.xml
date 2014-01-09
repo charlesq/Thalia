@@ -1,0 +1,25 @@
+<project name="banking" default="buildsrc" basedir=".">
+   <description>
+   Build java edition of banking emulation application
+   </description>
+   <property name="src" location="src"/>
+   <property name="build" location="bin"/>
+   <property name="dist" location="~/jar"/>
+   <target name="init">
+       <mkdir dir="${build}"/>
+   </target>
+   <target name="buildsrc" depends="init" description="compile the source">
+        <javac srcdir="${src}" destdir="${build}"/>
+        <javac srcdir="${src}/records" destdir="${build}"/>
+        <javac srcdir="${src}/exceptions" destdir="${build}"/>
+   </target>
+   <target name="clean">
+        <delete> 
+            <fileset dir="${build}">
+                <include name ="*.class"/>
+                <include name ="*.jar"/>
+            </fileset>
+        </delete>
+   </target>
+</project>
+

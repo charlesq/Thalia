@@ -1,0 +1,73 @@
+<!--       
+   members.xml icontains bank member profiles. 
+  To subscribe to the banking service, a client, namely 
+  bank member, must have a profile established to use banking
+  services. 
+  
+  A member is uniquely identified with an SSN in the prifle.  
+  Other personal informaiton includes: name, residence address, 
+  phone number, etc.
+
+  As the bank provides several types of memberships as defined in
+  membership.xml. A member may subscribe to one per see.
+
+  A member may own mutiple accounts, either as a sole primary owner,
+  or as a primary/secondary owner on a joint account. 
+
+  Only a banker may edit this file. A cacher has only read access to this 
+  file.
+  
+-->
+<Profiles>
+    <!-- member status may be "pre-approved","active" "locked"
+         "pre-approved" indicates that the customer submitted a application 
+         to open accounts and bank approval is pending and  no transactions/
+         acctivities are allowed in any associated accounts.
+
+         once approved, status is changed to "active", and the new customer
+         becomees a regular member and may use the services.  
+        
+         For any reason such as "compromised account seurity", the status
+         will change to "locked".
+  
+         Only after the issues have been resolved, the "active" status 
+         will resume.
+         
+         Note: for simplification purpose: age info is not recored. 
+
+     -->
+    <member status = "active">
+       <!-- ssn is mandatory and is used as the member id in the syste -->
+       <ssn>123-45-8901</ssn>
+       <name>
+           <firstname>May </firstname> 
+           <lastname>Flowers</lastname>
+       </name>
+       <!-- membership since  date, a mandatory field -->
+       <since>01012014 </since>
+       <!-- address is mandatory --> 
+       <address>
+           <street> 87 Main Str</street> 
+           <city>Hillsboro</city>
+           <state>OR</state>
+           <zipcode>97111</zipcode>
+       </address>
+       <!-- phone is optional, unsuppored yet-->
+       <phone> 971-239-9901</phone> 
+ 
+       <!--   membership type may be "regular", or "premium" --> 
+       <membership> 
+         <typ>regular</type>
+       </membership>
+       <accounts>
+               <number>1159-1</number>
+       </accounts>
+    </member>
+    <member>
+    </member>
+</prifles>
+<!--computed against all elements in node profiles to assure integrity 
+  any access to this file examine content integrity first 
+-->
+<message_digest>
+</message_digest>

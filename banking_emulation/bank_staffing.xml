@@ -1,0 +1,14 @@
+<!--
+   bank_staffing.xml prescribes personnel for banking service operations. 
+   The banking application should read from this file to config cashers and 
+   bankers set banking capacities. 
+-->
+<staffing>
+   <total>4</total>
+   <cashers>3</cashers>
+   <bankers>1</bankers>
+</staffing>
+<!--computed over elements in staffing node , any access to content of this file, should verify it
+, the value should be recomputed after editing -->
+<message_digeset>
+</message_digest>

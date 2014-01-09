@@ -1,0 +1,21 @@
+<activities>
+    <!-- activity sequence: more recent activites should display closer to the top -->
+    <activity>
+        <!-- 01012014 denotes 01/01/2014 -->
+        <date>01012014 <date/>
+        <!-- 100101 denotes 10:01:01, hour value is between  0 and 23-->
+        <time>100101<time/>
+        <clien>May Flowers<client/>
+        <!-- transaction id should be bankwise unique -->
+        <transaction_id>11345 <transaction_id/>
+        <!-- an operation can be either "deposite" or "withdraw" -->
+        <operation>deposite<operation/>
+        <!-- type can be either "cash" or "check" --> 
+        <type>cash<type/> 
+        <amount>100.00 <amount/>
+        <!-- account balance after the transaction -->
+        <balance>100.00 <balance/>
+    <activity/>
+<activities/>
+<message_digest>
+<message_digest/>
