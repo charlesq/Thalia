@@ -1,4 +1,5 @@
 1. A Summary of WiFiFTP Server App
+
  1.1 Functionality Description
    A configurable android app to set up an FTP server on the android
    device, other devices running a FTP client app may connect to it and
@@ -34,4 +35,4 @@
    Uses SharedPreferene to store parameter settings
   1.3.5 Executor and ExecutorService
    Uses both for serving client commands.
-
+  1.3.6 Wakelock and WiFi Radio Lock
