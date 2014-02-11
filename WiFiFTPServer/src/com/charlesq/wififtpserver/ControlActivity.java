@@ -40,11 +40,19 @@ public class ControlActivity extends Activity implements WifiStateChangeReceiver
     Button mStartStopButton;
     FTPService mService;
     ServiceConnection mConnection;
+    private boolean mStoredState = false; /* no service not started */
+    
     
     @Override
     public void onCreate(Bundle savedInstanceState) 
     { 
         super.onCreate(savedInstanceState); 
+        if (savedInstanceState != null && savedInstanceState.containsKey(getString(R.string.ui_start_stop)))
+        {
+            String state = savedInstanceState.getCharSequence(getString(R.string.ui_start_stop)).toString();
+            if (state.equalsIgnoreCase("Stop"))
+        	    mStoredState = true;
+        }
         setContentView(R.layout.activity_control);
         mPort = (TextView)findViewById(R.id.port_number);
         mUsername = (TextView)findViewById(R.id.username);
@@ -56,8 +64,35 @@ public class ControlActivity extends Activity implements WifiStateChangeReceiver
         mWiFi.setText(isWifiConnected()?"connected": "disconnected");
         Settings.setContext(this);
         restoreSettings();
+        String s = Settings.getPreference(getString(R.string.ui_start_stop));
+        if (s != null && s.equalsIgnoreCase("Stop"))
+        {
+        	doBindService();
+            mStartStopButton.setText("Stop");
+            Settings.commitPreference(getString(R.string.ui_start_stop), "start");
+        }
+        
 
     }
+    @Override
+    protected void  onRestoreInstanceState (Bundle savedInstanceState) 
+    {
+        super.onCreate(savedInstanceState); 
+        if (savedInstanceState != null && savedInstanceState.containsKey(getString(R.string.ui_start_stop)))
+        {
+            String state = savedInstanceState.getCharSequence(getString(R.string.ui_start_stop)).toString();
+            if (state.equalsIgnoreCase("Stop"))
+        	    mStoredState = true;
+        }
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+    	super.onSaveInstanceState(outState);
+      outState.putCharSequence(getString(R.string.ui_start_stop), mStartStopButton.getText());
+      Settings.commitPreference(getString(R.string.ui_start_stop), mStartStopButton.getText().toString());
+      
+    }
+
     @Override
     protected void onPause() 
     { 
@@ -68,12 +103,18 @@ public class ControlActivity extends Activity implements WifiStateChangeReceiver
     @Override
     protected void onResume() 
     { 
-        super.onResume(); 
+        super.onResume();
         IntentFilter filter= new IntentFilter(getString(R.string.Service_Event)); 
         LocalBroadcastManager.getInstance(this).registerReceiver(onLBMessage, filter);
         WifiStateChangeReceiver.registerListener(this);
         preserveSharedPreferences();
         loadSharedPreferences();
+        if (mStoredState)
+        {
+        	 doBindService();
+             mStartStopButton.setText("Stop");
+        	 mStoredState = false;
+        }
     } 
     
    
@@ -86,7 +127,7 @@ public class ControlActivity extends Activity implements WifiStateChangeReceiver
     
     public void onStartStopClick(View v) 
     { 
-    	 if (new String("start").equalsIgnoreCase(mStartStopButton.getText().toString()))
+    	 if (new String("start").equalsIgnoreCase(mStartStopButton.getText().toString()) && mService == null)
          {
                 doBindService();
                 mStartStopButton.setText("Stop");
