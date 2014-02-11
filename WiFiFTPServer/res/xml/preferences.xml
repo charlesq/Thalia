@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <EditTextPreference android:key="@string/PortNumber" android:defaultValue="2121" android:inputType="number" android:enabled="true"  android:persistent="true" android:title="Port Number" android:selectable="true"/>
+    <EditTextPreference android:key="@string/UserName" android:defaultValue="acquila" android:enabled="true" android:persistent="true" android:title="User Name" android:selectable="true"/>
+    <EditTextPreference android:key="@string/PassWord" android:defaultValue="1234" android:enabled="true" android:persistent="true" android:title="Pass Word" android:selectable="true"/>
+    <EditTextPreference android:key="@string/FTPFolder" android:title="FTP Folder" android:enabled="true" android:defaultValue="\" android:persistent="true" android:selectable="true"/>
+    <Preference android:key="Button" android:title="Exit"/>
+     
+</PreferenceScreen>
+ 

@@ -1,0 +1,37 @@
+1. A Summary of WiFiFTP Server App
+ 1.1 Functionality Description
+   A configurable android app to set up an FTP server on the android
+   device, other devices running a FTP client app may connect to it and
+   grab, delete, rename files.
+  
+   Configurable parameters include port number, user name, password,
+   chroot dir. 
+
+ 1.2 Main Components
+  1.2.1 ControlActivity
+   An Activity UI for start/stop the service and activate settings
+  1.2.2 Settings change classes
+   ConfigActivity, ConfigPreference
+  1.2.3 Android Service host classes
+   FTPService, TheServer
+  1.2.4  Context classes
+   Settings, SessionContext
+  1.2.5 FTP Command Classes
+   a set of of Cmd* classes, modified from Swiftp FTP command classes
+  1.2.6 Supporting classes
+   util, DataSocketFactory
+
+ 1.3 Main desgin features
+  1.3.1 Event Notification
+   Uses Notification Service to alert users of events
+  1.3.2 Binder Service
+   Uses bindService/unbindService to start/end FTP Service
+   Uses IBinder for Activity to Service communications 
+  1.3.3 LocalBroadcast Messaging
+   Uses LocalBroadcast Messaging for Service to Activity communication
+  1.3.4 Preference and Shared Preference
+   Uses PrefernceFragment, EditTextPreference for parameter settings
+   Uses SharedPreferene to store parameter settings
+  1.3.5 Executor and ExecutorService
+   Uses both for serving client commands.
+
