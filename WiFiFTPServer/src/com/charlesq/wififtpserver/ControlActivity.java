@@ -65,6 +65,7 @@ public class ControlActivity extends Activity implements WifiStateChangeReceiver
         Settings.setContext(this);
         restoreSettings();
         String s = Settings.getPreference(getString(R.string.ui_start_stop));
+        
         if (s != null && s.equalsIgnoreCase("Stop"))
         {
         	doBindService();
@@ -85,6 +86,7 @@ public class ControlActivity extends Activity implements WifiStateChangeReceiver
         	    mStoredState = true;
         }
     }
+    
     @Override
     protected void onSaveInstanceState(Bundle outState) {
     	super.onSaveInstanceState(outState);
@@ -137,6 +139,7 @@ public class ControlActivity extends Activity implements WifiStateChangeReceiver
          {
                  mStartStopButton.setText("Start");
                  unbindService(mConnection);
+                 mService = null;
          }
 
     }
@@ -166,6 +169,8 @@ public class ControlActivity extends Activity implements WifiStateChangeReceiver
     /* a bind service helper */
     private void doBindService()
     {
+    	if (mConnection == null)
+    	{
         mConnection = new ServiceConnection()
         {
             @Override
@@ -179,7 +184,9 @@ public class ControlActivity extends Activity implements WifiStateChangeReceiver
 			       mService = null;
 			}
 		};
+    	}
         bindService(new Intent(this, FTPService.class), mConnection, Context.BIND_AUTO_CREATE);
+    	
     }
     
     private void preserveSharedPreferences()
