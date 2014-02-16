@@ -51,8 +51,8 @@ public class FTPService extends Service {
         LocalBroadcastManager.getInstance(this).sendBroadcast(in);
         mNotifyManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 		mNotificationBuilder = new NotificationCompat.Builder(getApplicationContext()).setSmallIcon(R.drawable.ic_launcher6);
-		sendNotification("FTP Server is up", "Awaiting connection", null, 0);/* Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | 
-				Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);*/
+		sendNotification("FTP Server is up", "Awaiting connection", null,  Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | 
+				Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 		Settings.setContext(this);
 		
 		server = TheServer.getInstance(this);
@@ -72,7 +72,7 @@ public class FTPService extends Service {
     }
     private void sendNotification(String title, String text, String info, int flags)
 	{
-		Intent intent =  new Intent();//, ControlActivity.class);
+		Intent intent =  new Intent(this, ControlActivity.class);
 	    intent.setFlags(flags);
 	    PendingIntent pending = PendingIntent.getActivity(this, 0, intent, 0);
 	    mNotificationBuilder.setContentIntent(pending);

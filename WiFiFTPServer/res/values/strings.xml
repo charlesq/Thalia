@@ -6,7 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="ui_title">FTP Server Service</string>
     <string name="ui_wifi_status">WiFi Status:</string>
-    <string name="ui_ftp_url_value">non available</string>
+    <string name="ui_ftp_url_value">unavailable</string>
     <string name="ui_port_number">Port Number:</string>
     <string name="ui_username">User Name</string>
     <string name="ui_password">Pass Word:</string>

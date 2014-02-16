@@ -69,7 +69,7 @@ public class ControlActivity extends Activity implements WifiStateChangeReceiver
         if (s != null && s.equalsIgnoreCase("Stop"))
         {
         	doBindService();
-            mStartStopButton.setText("Stop");
+            mStartStopButton.setText("stop");
             Settings.commitPreference(getString(R.string.ui_start_stop), "start");
         }
         
@@ -238,20 +238,20 @@ public class ControlActivity extends Activity implements WifiStateChangeReceiver
     private void restoreSettings()
     {
     	String value = Settings.getPreference(getString(R.string.UserName));
-    	if (Settings.getPreference(getString(R.string.UserName)) == "")
+    	if (Settings.getPreference(getString(R.string.UserName)) == null)
     	{
     		Settings.commitPreference(getString(R.string.UserName), mUsername.getText().toString());
     	}
-    	if (Settings.getPreference(getString(R.string.PassWord)) == "")
+    	if (Settings.getPreference(getString(R.string.PassWord)) == null)
     	{
     		Settings.commitPreference(getString(R.string.PassWord), mPassword.getText().toString());
     	}
-    	if (Settings.getPreference(getString(R.string.FTPFolder)) == "")
+    	if (Settings.getPreference(getString(R.string.FTPFolder)) == null)
     	{
     		Settings.commitPreference(getString(R.string.FTPFolder), mFolder.getText().toString());
     	}
-    	value = Settings.getPreference(getString(R.string.PortNumber));
-    	if (Settings.getPreference(getString(R.string.PortNumber)) == "")
+     	value = Settings.getPreference(getString(R.string.PortNumber));
+    	if (Settings.getPreference(getString(R.string.PortNumber)) == null)
     	{
     		Settings.commitPreference(getString(R.string.PortNumber), mPort.getText().toString());
     	}

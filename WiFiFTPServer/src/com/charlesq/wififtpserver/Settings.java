@@ -61,7 +61,8 @@ public class Settings {
 	}
 	public static String getPreference(String key)
 	{
-		return mPrefernces.getString(key, null);
+		String s = mPrefernces.getString(key, null);
+		return s;
 	}
 	public static synchronized void setChrootDir()
 	{
