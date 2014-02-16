@@ -1,4 +1,6 @@
 package com.charlesq.wififtpserver;
+
+import android.util.Log;
 /* Modified from SwiFTP code */
 /*
  *  This program is free software: you can redistribute it and/or modify
@@ -39,13 +41,16 @@ public class CmdSYST extends FtpCmd implements Runnable {
 	// This is considered a safe response to the SYST command, see
 	// http://cr.yp.to/ftp/syst.html
 	public static final String response = "215 UNIX Type: L8\r\n";
+	String input;
 	
-	public CmdSYST(SessionContext sessionContext) {
+	public CmdSYST(SessionContext sessionContext, String input) {
 		super(sessionContext);
+		this.input = input;
 	}
 	
 	
 	public void run() {
 		sessionContext.writeString(response);
+		Log.e(Settings.getContext().getString(R.string.app_name),"send response" + response);
 	}
 }
